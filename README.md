@@ -10,17 +10,17 @@
 
 - [x] 프로젝트 생성 및 기본 Gradle 설정
 - [x] README 초안 작성
-- [ ] 앱 컨셉 및 핵심 기능 확정
+- [x] 앱 컨셉 및 핵심 기능 확정
 - [ ] UI/UX 프로토타입 구현
 - [ ] Clean Architecture 레이어 구성 완료
 - [ ] ...
 
 ## 개발 로드맵 (예정)
-
 ### Phase 1 – 설계 및 프로토타입
 - 앱 컨셉 구체화 및 핵심 기능 정의
 - 기능별 User Flow 작성
-- 화면 설계(Figma 또는 Compose Preview)
+- [화면 설계](https://www.figma.com/make/qYni2P6QC67CasuB1XPPDH/Jafar--Community-?node-id=0-1&p=f&t=kXXtMryN9koUUhPc-0&fullscreen=1) </br>
+<img width="4028" height="1316" alt="image" src="https://github.com/user-attachments/assets/8cdcc726-d010-42a0-88ff-2896ad5f9bbc" />
 - Jetpack Compose 기반 간단한 프로토타입 UI 구현
 
 ### Phase 2 – 아키텍처 구축
