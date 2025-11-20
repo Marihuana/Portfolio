@@ -1,4 +1,4 @@
-package kr.yooreka.portfolio.ui.theme
+package kr.yooreka.jafar.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun PortfolioTheme(
+fun JafarTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

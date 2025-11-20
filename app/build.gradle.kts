@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "kr.yooreka.portfolio"
+    namespace = "kr.yooreka.jafar"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "kr.yooreka.portfolio"
+        applicationId = "kr.yooreka.jafar"
         minSdk = 27
         targetSdk = 34
         versionCode = 1

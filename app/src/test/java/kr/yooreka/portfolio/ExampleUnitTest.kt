@@ -1,4 +1,4 @@
-package kr.yooreka.portfolio
+package kr.yooreka.jafar
 
 import org.junit.Test
 
