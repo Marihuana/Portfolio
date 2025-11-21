@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Jafar</string>
 
-
-    <string name="name">유재홍</string>
-    <string name="job">Android Developer</string>
-    <string-array name="skills">
+    <string name="profile_title">프로필</string>
+    <string name="profile_name">유재홍</string>
+    <string name="profile_position">Android Developer</string>
+    <string-array name="profile_skill_tags">
         <item>Java</item>
         <item>Kotlin</item>
         <item>Android</item>
