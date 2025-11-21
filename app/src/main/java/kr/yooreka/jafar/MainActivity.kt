@@ -73,12 +73,12 @@ fun ProfileCard() {
                     .size(80.dp),
             )
             Text(
-                stringResource(R.string.name)
+                stringResource(R.string.profile_name)
             )
             Text(
-                stringResource(R.string.job)
+                stringResource(R.string.profile_position)
             )
-            val skills = stringArrayResource(id = R.array.skills)
+            val skills = stringArrayResource(id = R.array.profile_skill_tags)
             Row(
             ) {
                 skills.forEach { item ->
