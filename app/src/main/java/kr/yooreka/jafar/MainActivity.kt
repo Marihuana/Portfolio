@@ -10,13 +10,17 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
@@ -26,12 +30,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
 import kr.yooreka.jafar.ui.theme.JafarTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,8 +51,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             JafarTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Row(modifier = Modifier.padding(innerPadding)) {
-                        ProfileCard()
+                    Row(
+                        modifier = Modifier
+                            .verticalScroll(rememberScrollState())
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .padding(innerPadding)
+                    ) {
+                        Home()
                     }
                 }
             }
@@ -54,14 +70,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ProfileCard() {
     Card(
+        modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp),
-            verticalArrangement = Arrangement.SpaceEvenly,
+                .padding(20.dp)
+                .defaultMinSize(minHeight = 180.dp),
+            verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
@@ -79,8 +97,7 @@ fun ProfileCard() {
                 stringResource(R.string.profile_position)
             )
             val skills = stringArrayResource(id = R.array.profile_skill_tags)
-            Row(
-            ) {
+            Row {
                 skills.forEach { item ->
                     Spacer(modifier = Modifier.size(4.dp))
                     Text(
@@ -144,7 +161,7 @@ fun ContactIcon(
     image: Painter,
     contentDescription: String,
     modifier: Modifier = Modifier
-){
+) {
     Image(
         painter = image,
         contentDescription = contentDescription,
@@ -156,9 +173,9 @@ fun ContactIcon(
 @Composable
 fun ContactItem(
     image: Painter,
-    title : String,
-    value : String,
-){
+    title: String,
+    value: String,
+) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxWidth()
@@ -169,7 +186,7 @@ fun ContactItem(
         ContactIcon(
             image = image,
             contentDescription = title,
-            modifier = Modifier.constrainAs(iconRef){
+            modifier = Modifier.constrainAs(iconRef) {
                 top.linkTo(parent.top)
                 bottom.linkTo(parent.bottom)
                 start.linkTo(parent.start)
@@ -177,13 +194,13 @@ fun ContactItem(
         )
         Text(
             text = title,
-            modifier = Modifier.constrainAs(titleRef){
+            modifier = Modifier.constrainAs(titleRef) {
                 start.linkTo(iconRef.end, margin = 12.dp)
             }
         )
         Text(
             text = value,
-            modifier = Modifier.constrainAs(valueRef){
+            modifier = Modifier.constrainAs(valueRef) {
                 start.linkTo(iconRef.end, margin = 12.dp)
             }
         )
@@ -194,6 +211,7 @@ fun ContactItem(
 @Composable
 fun SummaryCard() {
     Card(
+        modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(10.dp)
     ) {
@@ -232,16 +250,9 @@ fun Home() {
             .padding(16.dp)
     ) {
         ProfileCard()
+        Spacer(modifier = Modifier.size(16.dp))
         ContactCard()
-        SummaryCard()
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun SummaryPreview() {
-    JafarTheme {
+        Spacer(modifier = Modifier.size(16.dp))
         SummaryCard()
     }
 }
@@ -253,6 +264,23 @@ fun ProfilePreview() {
         ProfileCard()
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun ContactsPreview() {
+    JafarTheme {
+        ContactCard()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun SummaryPreview() {
+    JafarTheme {
+        SummaryCard()
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
